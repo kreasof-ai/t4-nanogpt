@@ -4,7 +4,7 @@ A simplified GPT-2 training setup descended from the [NanoGPT speedrun](https://
 
 ## Overview
 
-Trains a 124M-parameter GPT-2-scale model on [FinewebEDU-10B](https://huggingface.co/datasets/kjj0/finewebedu10B-gpt2) using:
+Trains a 162M-parameter GPT-2-scale model on [FinewebEDU-10B](https://huggingface.co/datasets/kjj0/finewebedu10B-gpt2) using:
 
 - **NorMuonH** optimizer — Newton-Schulz orthogonalized gradients (Muon) with Adafactor-style row/column variance preconditioning and a hyperball Frobenius-norm-preserving update step
 - **Custom FP16 scaled matmul** — avoids FP16 overflow during forward and backward passes without requiring BF16 hardware
@@ -56,7 +56,7 @@ Data shards are downloaded on first run to `./finewebedu10B/`.
 | Model dimension | 768 |
 | Head dimension | 128 |
 | MLP expansion | 4× |
-| Parameters | ~124M |
+| Parameters | ~162M |
 | Sequence length | 1,024 |
 
 ## Training Setup
