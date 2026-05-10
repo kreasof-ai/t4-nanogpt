@@ -107,6 +107,7 @@ Tested on T4, L4, V100, A100, H100. MFU is logged during training. The default p
 | Total training time | 12,770.84 s (3 h 32 m 50 s) |
 | Train loss | 4.750 |
 | Val loss | 4.72264 |
+| MFU | 13.2% |
 
 ### H100 Benchmark (1 data shard, 100M tokens, BF16 activations)
 
@@ -117,6 +118,7 @@ Tested on T4, L4, V100, A100, H100. MFU is logged during training. The default p
 | Total training time | 299.203 s (4 m 59 s) |
 | Train loss | 4.990 |
 | Val loss | 4.96310 |
+| MFU | 45.2% |
 
 ## References
 
