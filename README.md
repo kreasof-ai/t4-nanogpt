@@ -108,6 +108,16 @@ Tested on T4, L4, V100, A100, H100. MFU is logged during training. The default p
 | Train loss | 4.750 |
 | Val loss | 4.72264 |
 
+### H100 Benchmark (1 data shard, 100M tokens, BF16 activations)
+
+| Metric | Value |
+|---|---|
+| Steps | 190 |
+| Avg time per step | 1,270 ms (1.27 s) |
+| Total training time | 299.203 s (4 m 59 s) |
+| Train loss | 4.990 |
+| Val loss | 4.96310 |
+
 ## References
 
 - [NanoGPT speedrun](https://github.com/KellerJordan/modded-nanogpt) — upstream codebase
