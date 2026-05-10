@@ -105,6 +105,8 @@ Tested on T4, L4, V100, A100, H100. MFU is logged during training. The default p
 | Steps | 190 |
 | Avg time per step | 66,582 ms (66.5 s) |
 | Total training time | 12,770.84 s (3 h 32 m 50 s) |
+| Train loss | 4.750 |
+| Val loss | 4.72264 |
 
 ## References
 
