@@ -1,6 +1,6 @@
 # t4-nanogpt
 
-A simplified GPT-2 training setup descended from the [NanoGPT speedrun](https://github.com/KellerJordan/modded-nanogpt), adapted for neural net optimization research and tuned to run on a single T4 GPU (e.g. Google Colab free tier).
+A simplified GPT-2 training setup descended from the [NanoGPT speedrun](https://github.com/KellerJordan/modded-nanogpt), adapted for neural net optimization research and tuned to run on a single T4 GPU (e.g. Google Colab free tier). Enabling viable experimentation under 5 hours of daily Google Colab T4 limit.
 
 ## Overview
 
