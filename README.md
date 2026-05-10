@@ -36,6 +36,8 @@ src/
 
 Open `colab_T4.ipynb` in Google Colab with a T4 GPU runtime and run all cells. Data is downloaded automatically from Hugging Face.
 
+You can either download from this repo or open this public Colab link ([https://colab.research.google.com/drive/1kwgmUAGDaPh4uLjShEPZh_R2vy8JailX?usp=sharing]())
+
 ### Local
 
 ```bash
@@ -49,38 +51,38 @@ Data shards are downloaded on first run to `./finewebedu10B/`.
 
 ## Model Architecture
 
-| Hyperparameter | Value |
-|---|---|
+| Hyperparameter  | Value  |
+| --------------- | ------ |
 | Vocabulary size | 50,304 |
-| Layers | 12 |
-| Model dimension | 768 |
-| Head dimension | 128 |
-| MLP expansion | 4× |
-| Parameters | ~162M |
-| Sequence length | 1,024 |
+| Layers          | 12     |
+| Model dimension | 768    |
+| Head dimension  | 128    |
+| MLP expansion   | 4×    |
+| Parameters      | ~162M  |
+| Sequence length | 1,024  |
 
 ## Training Setup
 
-| Setting | Value |
-|---|---|
-| Batch size | 8 × 64 × 1024 tokens |
-| Microbatch size | 8 |
-| NorMuonH lr (weights) | 0.035 |
-| AdamW lr (embeddings) | 0.3 |
-| LR schedule | Linear cooldown (full run for NorMuonH, 40% for AdamW) |
-| Gradient clipping | 1.0 |
+| Setting               | Value                                                  |
+| --------------------- | ------------------------------------------------------ |
+| Batch size            | 8 × 64 × 1024 tokens                                 |
+| Microbatch size       | 8                                                      |
+| NorMuonH lr (weights) | 0.035                                                  |
+| AdamW lr (embeddings) | 0.3                                                    |
+| LR schedule           | Linear cooldown (full run for NorMuonH, 40% for AdamW) |
+| Gradient clipping     | 1.0                                                    |
 
 ## SigReg Regularization
 
 Set `REG_MODE` and `SIGR_ALPHA` to apply a regularization penalty on block hidden states:
 
-| `REG_MODE` | Loss |
-|---|---|
-| `baseline` | None (disabled) |
-| `weak` | Covariance → identity (whitening) |
-| `discrete` | Normalized covariance → identity |
-| `strong` | Characteristic function distance from Gaussian |
-| `zipfian` | Angular orthogonality + Zipf magnitude distribution |
+| `REG_MODE` | Loss                                                |
+| ------------ | --------------------------------------------------- |
+| `baseline` | None (disabled)                                     |
+| `weak`     | Covariance → identity (whitening)                  |
+| `discrete` | Normalized covariance → identity                   |
+| `strong`   | Characteristic function distance from Gaussian      |
+| `zipfian`  | Angular orthogonality + Zipf magnitude distribution |
 
 `SIGR_ALPHA` controls the blend: `loss = (1 - alpha) * ce_loss + alpha * reg_loss`.
 
@@ -100,25 +102,25 @@ Tested on T4, L4, V100, A100, H100. MFU is logged during training. The default p
 
 ### T4 Benchmark (1 data shard, 100M tokens)
 
-| Metric | Value |
-|---|---|
-| Steps | 190 |
-| Avg time per step | 66,582 ms (66.5 s) |
+| Metric              | Value                       |
+| ------------------- | --------------------------- |
+| Steps               | 190                         |
+| Avg time per step   | 66,582 ms (66.5 s)          |
 | Total training time | 12,770.84 s (3 h 32 m 50 s) |
-| Train loss | 4.750 |
-| Val loss | 4.72264 |
-| MFU | 13.2% |
+| Train loss          | 4.750                       |
+| Val loss            | 4.72264                     |
+| MFU                 | 13.2%                       |
 
 ### H100 Benchmark (1 data shard, 100M tokens, BF16 activations)
 
-| Metric | Value |
-|---|---|
-| Steps | 190 |
-| Avg time per step | 1,270 ms (1.27 s) |
+| Metric              | Value                |
+| ------------------- | -------------------- |
+| Steps               | 190                  |
+| Avg time per step   | 1,270 ms (1.27 s)    |
 | Total training time | 299.203 s (4 m 59 s) |
-| Train loss | 4.990 |
-| Val loss | 4.96310 |
-| MFU | 45.2% |
+| Train loss          | 4.990                |
+| Val loss            | 4.96310              |
+| MFU                 | 45.2%                |
 
 ## References
 
