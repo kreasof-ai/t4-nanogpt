@@ -98,6 +98,14 @@ Each weight shape class (QKV, MLP-fc, attn-proj, mlp-proj) gets its own optimize
 
 Tested on T4, L4, V100, A100, H100. MFU is logged during training. The default peak FLOP assumption is 65 TFLOPS (T4); this is auto-detected from `torch.cuda.get_device_name()`.
 
+### T4 Benchmark (1 data shard, 100M tokens)
+
+| Metric | Value |
+|---|---|
+| Steps | 190 |
+| Avg time per step | 66,582 ms (66.5 s) |
+| Total training time | 12,770.84 s (3 h 32 m 50 s) |
+
 ## References
 
 - [NanoGPT speedrun](https://github.com/KellerJordan/modded-nanogpt) — upstream codebase
