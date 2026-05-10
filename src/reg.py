@@ -1,4 +1,5 @@
 import torch
+import torch.nn.functional as F
 
 def sigreg_weak_loss(x, sketch_dim=64):
     N, C = x.size()
