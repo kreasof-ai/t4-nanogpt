@@ -23,12 +23,12 @@
   <rect width="668" height="218" x="1" y="1" rx="15" fill="none" stroke="#1E293B" stroke-width="2"/>
 
   <!-- Left Icon Area (Stylized GPU / T4 / Nodes) -->
-  <g transform="translate(60, 45)">
+  <g transform="translate(70, 45)">
     <!-- Outer GPU Chip Base -->
     <rect x="10" y="10" width="110" height="110" rx="12" fill="none" stroke="url(#primaryGradient)" stroke-width="4" />
     
     <!-- Chip pins -->
-    <path d="M 0 30 h 10 m -10 20 h 10 m -10 20 h 10 m -10 20 h 10 m 120 -60 h 10 m -10 20 h 10 m -10 20 h 10 m -10 20 h 10 M 30 0 v 10 m 20 -10 v 10 m 20 -10 v 10 m 20 -10 v 10 M 30 130 v -10 m 20 10 v -10 m 20 10 v -10 m 20 10 v -10" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 0 35 h 10 m -10 20 h 10 m -10 20 h 10 m -10 20 h 10 m 110 -60 h 10 m -10 20 h 10 m -10 20 h 10 m -10 20 h 10 M 35 0 v 10 m 20 -10 v 10 m 20 -10 v 10 m 20 -10 v 10 M 35 130 v -10 m 20 10 v -10 m 20 10 v -10 m 20 10 v -10" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
     
     <!-- Inner Neural Nodes -->
     <circle cx="45" cy="45" r="6" fill="url(#accentGradient)" filter="url(#glow)"/>
