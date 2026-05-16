@@ -122,6 +122,37 @@ Tested on T4, L4, V100, A100, H100. MFU is logged during training. The default p
 | Val loss            | 4.96310              |
 | MFU                 | 45.2%                |
 
+## Experimental
+
+### LFM2 Hybrid Architecture (`experimental/lfm2-nanogpt.ipynb`)
+
+A hybrid model replacing most attention blocks with LFM2 gated short convolutions, run on 2× T4 GPUs (Kaggle).
+
+**Architecture changes from baseline:**
+
+- 9 of 12 blocks use `LFM2Conv` (gated depthwise conv1d, kernel size 3) from the [LFM2 paper](https://arxiv.org/abs/2511.23404), replacing full self-attention
+- The remaining 3 blocks (positions 2, 6, 10) use `CausalSelfAttention` with Canon-B: causal conv1d residuals added to Q, K, and V projections before SDPA
+- Attention blocks include sigmoid gating on the output
+- Optimizer: AdamW + Muon (instead of NorMuonH)
+
+Block interleaving pattern (12 layers):
+```
+LFM2, LFM2, Attn, LFM2, LFM2, LFM2, Attn, LFM2, LFM2, LFM2, Attn, LFM2
+```
+
+**Results (1 data shard, 100M tokens, 2× T4):**
+
+| Metric              | Value       |
+| ------------------- | ----------- |
+| Steps               | 190         |
+| Avg time per step   | 32,480 ms   |
+| Total training time | 6,244.933 s |
+| Train loss          | 4.398       |
+| Val loss            | 4.37842     |
+| MFU                 | 13.7%       |
+
+Compared to the single-T4 baseline, the hybrid model achieves significantly lower loss (val 4.378 vs 4.723) in roughly half the wall-clock time, at similar MFU. The improved loss reflects both the hybrid architecture and the 2× GPU setup enabling a larger effective batch.
+
 ## References
 
 - [NanoGPT speedrun](https://github.com/KellerJordan/modded-nanogpt) — upstream codebase
