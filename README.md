@@ -131,11 +131,12 @@ A hybrid model replacing most attention blocks with LFM2 gated short convolution
 **Architecture changes from baseline:**
 
 - 9 of 12 blocks use `LFM2Conv` (gated depthwise conv1d, kernel size 3) from the [LFM2 paper](https://arxiv.org/abs/2511.23404), replacing full self-attention
-- The remaining 3 blocks (positions 2, 6, 10) use `CausalSelfAttention` with Canon-B: causal conv1d residuals added to Q, K, and V projections before SDPA
+- The remaining 3 blocks (positions 2, 6, 10) use `CausalSelfAttention` with [Canon layers](https://arxiv.org/abs/2512.17351): causal conv1d residuals added to Q, K, and V projections before SDPA to replace RoPE
 - Attention blocks include sigmoid gating on the output
 - Optimizer: AdamW + Muon (instead of NorMuonH)
 
 Block interleaving pattern (12 layers):
+
 ```
 LFM2, LFM2, Attn, LFM2, LFM2, LFM2, Attn, LFM2, LFM2, LFM2, Attn, LFM2
 ```
@@ -158,3 +159,5 @@ Compared to the single-T4 baseline, the hybrid model achieves significantly lowe
 - [NanoGPT speedrun](https://github.com/KellerJordan/modded-nanogpt) — upstream codebase
 - [NorMuon paper](https://arxiv.org/pdf/2510.05491) — optimizer basis
 - [FinewebEDU-10B dataset](https://huggingface.co/datasets/kjj0/finewebedu10B-gpt2)
+- [LFM2 paper](https://arxiv.org/abs/2511.23404) — gated short convolutions
+- [Canon layers](https://arxiv.org/abs/2512.17351) — causal conv1d residuals for Q, K, V projections
