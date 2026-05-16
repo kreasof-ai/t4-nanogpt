@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1120" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" /> <!-- Tailwind Light Blue -->
+      <stop offset="100%" stop-color="#818CF8" /> <!-- Tailwind Indigo -->
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A78BFA" /> <!-- Purple -->
+      <stop offset="100%" stop-color="#F472B6" /> <!-- Pink -->
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="220" rx="16" fill="url(#bgGradient)"/>
+  <rect width="798" height="218" x="1" y="1" rx="15" fill="none" stroke="#1E293B" stroke-width="2"/>
+
+  <!-- Left Icon Area (Stylized GPU / T4 / Nodes) -->
+  <g transform="translate(60, 45)">
+    <!-- Outer GPU Chip Base -->
+    <rect x="10" y="10" width="110" height="110" rx="12" fill="none" stroke="url(#primaryGradient)" stroke-width="4" />
+    
+    <!-- Chip pins -->
+    <path d="M 0 30 h 10 m -10 20 h 10 m -10 20 h 10 m -10 20 h 10 m 120 -60 h 10 m -10 20 h 10 m -10 20 h 10 m -10 20 h 10 M 30 0 v 10 m 20 -10 v 10 m 20 -10 v 10 m 20 -10 v 10 M 30 130 v -10 m 20 10 v -10 m 20 10 v -10 m 20 10 v -10" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Inner Neural Nodes -->
+    <circle cx="45" cy="45" r="6" fill="url(#accentGradient)" filter="url(#glow)"/>
+    <circle cx="85" cy="45" r="6" fill="url(#primaryGradient)"/>
+    <circle cx="65" cy="85" r="6" fill="url(#primaryGradient)"/>
+    
+    <!-- Connections -->
+    <path d="M 45 45 L 85 45 L 65 85 Z" fill="none" stroke="#475569" stroke-width="2" stroke-dasharray="4 4"/>
+    
+    <!-- "T4" Overlay inside icon -->
+    <text x="65" y="70" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#E2E8F0" text-anchor="middle">T4</text>
+  </g>
+
+  <!-- Right Text Area -->
+  <g transform="translate(240, 95)">
+    <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="800" fill="#F8FAFC" letter-spacing="-1">
+      t4<tspan fill="url(#primaryGradient)">-nanogpt</tspan>
+    </text>
+    
+    <!-- Subtitle -->
+    <text x="4" y="35" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="500" fill="#94A3B8">
+      Simplified GPT-2 training. Tuned for T4 GPU
+    </text>
+    
+    <!-- Tags -->
+    <g transform="translate(4, 55)">
+      <rect x="0" y="0" width="85" height="24" rx="12" fill="#1E293B" stroke="#334155"/>
+      <text x="42.5" y="16" font-family="monospace" font-size="12" font-weight="bold" fill="#38BDF8" text-anchor="middle">Muon</text>
+
+      <rect x="95" y="0" width="110" height="24" rx="12" fill="#1E293B" stroke="#334155"/>
+      <text x="150" y="16" font-family="monospace" font-size="12" font-weight="bold" fill="#A78BFA" text-anchor="middle">FP16 Matmul</text>
+
+      <rect x="215" y="0" width="90" height="24" rx="12" fill="#1E293B" stroke="#334155"/>
+      <text x="260" y="16" font-family="monospace" font-size="12" font-weight="bold" fill="#F472B6" text-anchor="middle">Colab Free</text>
+    </g>
+  </g>
+</svg>
